@@ -17,3 +17,5 @@ const Movie = db.define('movie', {
     type: Sequelize.STRING
   }
 })
+
+module.exports = Movie

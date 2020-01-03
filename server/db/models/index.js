@@ -1,4 +1,11 @@
 const User = require('./user')
+const Movie = require('./movie')
+const List = require('./list')
+
+Movie.hasMany(List)
+
+Movie.belongsToMany(List, {through: 'movie_list'})
+List.belongsToMany(Movie, {through: 'movie_list'})
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -14,5 +21,7 @@ const User = require('./user')
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
-  User
+  User,
+  Movie,
+  List
 }

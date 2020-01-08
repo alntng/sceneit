@@ -3,43 +3,57 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {TMDBAPIKEY} from '../../secrets'
 
-export default function addMovie() {
+export default function addMovie(props) {
   const [foundMovies, setFoundMovies] = useState([])
 
-  const onSubmit = async data => {
+  const queryMovie = async data => {
     const movieQuery = data.Title.split(' ').join('%20')
     const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDBAPIKEY}&language=en-US&query=${movieQuery}&page=1&include_adult=false`
 
     const res = await axios.get(movieURL)
 
     const movieSearch = res.data.results
+
     setFoundMovies(movieSearch)
   }
 
-  const {register, handleSubmit, watch, errors} = useForm()
+  const addToList = async (data, listId) => {
+    // console.log(data)
+    const newMovie = await axios.post('http://localhost:8080/api/movies/', data)
 
-  const year = new Date().getFullYear()
-  const years = Array.from(new Array(80), (val, index) => year - index)
+    axios.post('http://localhost:8080/api/list/', {
+      movieId: data.id,
+      listId: Number(listId)
+    })
+    return newMovie
+  }
+
+  const {register, handleSubmit} = useForm()
 
   console.log(foundMovies)
+  console.log(props.listid)
   return (
     <div>
       <h3>Add a movie</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Title</label>
+      <form onSubmit={handleSubmit(queryMovie)}>
+        <label>Search</label>
         <input name="Title" ref={register} />
-        <label>Release Year</label>
-        <select name="Year" ref={register}>
-          {years.map(year => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-        <label>Summary</label>
-        <input name="Summary" ref={register} />
         <input type="submit" />
       </form>
+      {foundMovies.map(movie => (
+        <div key={movie.itle}>
+          <h2>{movie.original_title}</h2>
+          <h3>{movie.release_date}</h3>
+          <button
+            type="submit"
+            onClick={() => {
+              addToList(movie, props.listid)
+            }}
+          >
+            Add Movie
+          </button>
+        </div>
+      ))}
     </div>
   )
 }

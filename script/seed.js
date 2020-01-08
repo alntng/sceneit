@@ -25,7 +25,7 @@ async function seed() {
   const murphy = await User.create({email: 'murphy@email.com', password: '123'})
 
   const marriageStory = await Movie.create({
-    movieId: '492188',
+    movieId: 492188,
     title: 'Marriage Story',
     releaseDate: '2019',
     summary: 'Adam Driver and Scarlet Johansen'

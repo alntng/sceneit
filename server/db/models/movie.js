@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Movie = db.define('movie', {
   movieId: {
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER
   },
   title: {
     type: Sequelize.STRING,
@@ -14,7 +14,7 @@ const Movie = db.define('movie', {
     allowNull: false
   },
   summary: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   }
 })
 

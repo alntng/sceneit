@@ -22,3 +22,28 @@ router.get('/:id', async (req, res, next) => {
     console.log(error)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    // console.log(req.body, '****')
+    const existingMovie = await Movie.findOne({
+      where: {movieId: req.body.id}
+    })
+
+    if (existingMovie) {
+      res.send(existingMovie)
+      console.log('found')
+    } else {
+      const newMovie = await Movie.create({
+        movieId: req.body.id,
+        title: req.body.original_title,
+        releaseDate: req.body.release_date,
+        summary: req.body.overview
+      })
+      console.log('Added')
+      res.send(newMovie)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+})

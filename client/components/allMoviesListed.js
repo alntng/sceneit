@@ -8,29 +8,33 @@ export default function movie() {
   let listId = useParams().listId
 
   const [moviesOnList, setMovieList] = useState([])
+  const [listName, setListName] = useState(' ')
 
-  useEffect(() => {
-    async function fetchData() {
-      const result = await axios.get(
-        `http://localhost:8080/api/list/${userId}/${listId}`
-      )
+  useEffect(
+    () => {
+      async function fetchData() {
+        const result = await axios.get(
+          `http://localhost:8080/api/list/${userId}/${listId}`
+        )
 
-      setMovieList(result.data)
-    }
+        setMovieList(result.data.movies)
+        setListName(result.data.title)
+      }
 
-    fetchData()
-  }, [])
+      fetchData()
+    },
+    [listName]
+  )
 
-  // console.log(moviesOnList)
   return (
     <div>
-      <h1>Movies on this list</h1>
+      <h1>{listName}</h1>
       {moviesOnList.map(movie => (
         <div key={movie.id}>
-          <h1>{movie.title}</h1>
+          <h3>{movie.title}</h3>
         </div>
       ))}
-      <AddMovie />
+      <AddMovie listid={listId} />
     </div>
   )
 }

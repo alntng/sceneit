@@ -30,7 +30,24 @@ router.get('/:userId/:listId', async (req, res, next) => {
       where: {id: req.params.listId},
       include: [{model: Movie}]
     })
-    res.send(list.movies)
+    res.send(list)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    const list = await List.findByPk(req.body.listId)
+    const newMovie = await Movie.findOne({
+      where: {movieId: req.body.movieId}
+    })
+
+    console.log('List Name', list.title)
+    console.log('Movie Title', newMovie.title)
+
+    list.addMovie(newMovie)
+    res.send(list)
   } catch (error) {
     console.log(error)
   }

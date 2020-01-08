@@ -9,18 +9,24 @@ export default function viewList(props) {
 
   const userId = props.id
 
+  const fetchData = async () => {
+    const result = await axios(`http://localhost:8080/api/list/${userId}`)
+    setList(result.data)
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios(`http://localhost:8080/api/list/${userId}`)
-
-      setList(result.data)
-    }
-
     fetchData()
   }, [])
 
-  const newList = async data => {
+  const addList = async data => {
     console.log(data)
+    const newList = await axios.post(
+      `http://localhost:8080/api/list/${userId}`,
+      data
+    )
+
+    fetchData()
+    return newList
   }
   // console.log(props, '***')
   return (
@@ -32,8 +38,8 @@ export default function viewList(props) {
         </div>
       ))}
       <h3>Create New List</h3>
-      <form onSubmit={handleSubmit(newList)}>
-        <input name="name" defaultValue="Who Cares" ref={register} />
+      <form onSubmit={handleSubmit(addList)}>
+        <input name="title" defaultValue="Who Cares" ref={register} />
         <input
           name="description"
           defaultValue="Movies not as good as parasite"

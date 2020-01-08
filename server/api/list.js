@@ -36,7 +36,7 @@ router.get('/:userId/:listId', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.put('/', async (req, res, next) => {
   try {
     const list = await List.findByPk(req.body.listId)
     const newMovie = await Movie.findOne({
@@ -48,6 +48,24 @@ router.post('/', async (req, res, next) => {
 
     list.addMovie(newMovie)
     res.send(list)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.post('/:userID', async (req, res, next) => {
+  try {
+    const {title, description} = req.body
+
+    const newList = await List.create({
+      title: title,
+      description: description
+    })
+
+    const currentUser = await User.findByPk(req.params.userID)
+
+    await currentUser.addList(newList)
+    res.send(currentUser)
   } catch (error) {
     console.log(error)
   }

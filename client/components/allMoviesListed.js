@@ -10,21 +10,18 @@ export default function movie() {
   const [moviesOnList, setMovieList] = useState([])
   const [listName, setListName] = useState(' ')
 
-  useEffect(
-    () => {
-      async function fetchData() {
-        const result = await axios.get(
-          `http://localhost:8080/api/list/${userId}/${listId}`
-        )
+  async function fetchData() {
+    const result = await axios.get(
+      `http://localhost:8080/api/list/${userId}/${listId}`
+    )
 
-        setMovieList(result.data.movies)
-        setListName(result.data.title)
-      }
+    setMovieList(result.data.movies)
+    setListName(result.data.title)
+  }
 
-      fetchData()
-    },
-    [listName]
-  )
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div>

@@ -21,7 +21,7 @@ export default function addMovie(props) {
     // console.log(data)
     const newMovie = await axios.post('http://localhost:8080/api/movies/', data)
 
-    axios.post('http://localhost:8080/api/list/', {
+    axios.put('http://localhost:8080/api/list/', {
       movieId: data.id,
       listId: Number(listId)
     })

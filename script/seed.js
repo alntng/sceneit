@@ -7,22 +7,37 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'}),
+  const favList = await List.create({
+    title: 'Favorites',
+    description: 'current faves'
+  })
+  const upNext = await List.create({
+    title: 'Watch Next',
+    description: 'On my watchlist'
+  })
 
-    List.create({title: 'Favorites', description: 'current faves'}),
-    List.create({title: 'Watch Next', description: 'On my watchlist'}),
+  const action = await List.create({
+    title: 'Action Movies',
+    description: 'fights'
+  })
 
-    Movie.create({
-      movieId: '1',
-      title: 'Marriage Story',
-      releaseDate: '2019',
-      summary: 'Adam Driver and Scarlet Johansen'
-    })
-  ])
+  const cody = await User.create({email: 'cody@email.com', password: '123'})
+  const murphy = await User.create({email: 'murphy@email.com', password: '123'})
 
-  console.log(`seeded ${users.length} users`)
+  const marriageStory = await Movie.create({
+    movieId: '492188',
+    title: 'Marriage Story',
+    releaseDate: '2019',
+    summary: 'Adam Driver and Scarlet Johansen'
+  })
+
+  await favList.setUser(cody)
+  await murphy.addList(upNext)
+  await action.setUser(cody)
+
+  await upNext.addMovie(marriageStory)
+  await favList.addMovie(marriageStory)
+
   console.log(`seeded successfully`)
 }
 

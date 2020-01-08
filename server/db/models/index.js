@@ -2,7 +2,8 @@ const User = require('./user')
 const Movie = require('./movie')
 const List = require('./list')
 
-Movie.hasMany(List)
+List.belongsTo(User)
+User.hasMany(List)
 
 Movie.belongsToMany(List, {through: 'movie_list'})
 List.belongsToMany(Movie, {through: 'movie_list'})

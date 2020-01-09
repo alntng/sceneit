@@ -32,7 +32,6 @@ router.post('/', async (req, res, next) => {
 
     if (existingMovie) {
       res.send(existingMovie)
-      console.log('found')
     } else {
       const newMovie = await Movie.create({
         movieId: req.body.id,
@@ -40,7 +39,7 @@ router.post('/', async (req, res, next) => {
         releaseDate: req.body.release_date,
         summary: req.body.overview
       })
-      console.log('Added')
+
       res.send(newMovie)
     }
   } catch (error) {

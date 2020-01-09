@@ -30,8 +30,6 @@ export default function addMovie(props) {
 
   const {register, handleSubmit} = useForm()
 
-  console.log(foundMovies)
-  console.log(props.listid)
   return (
     <div>
       <h3>Add a movie</h3>

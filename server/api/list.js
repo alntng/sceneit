@@ -70,3 +70,24 @@ router.post('/:userID', async (req, res, next) => {
     console.log(error)
   }
 })
+
+router.put('/:userId/:listId', async (req, res, next) => {
+  try {
+    const workingList = await List.findByPk(req.params.listId)
+    const workingMovie = await Movie.findByPk(req.body.id)
+
+    workingList.removeMovie(workingMovie)
+    res.send('Deleted')
+  } catch (error) {
+    console.log('Trouble Deleting', error)
+  }
+})
+
+router.delete('/:userId/:listId', async (req, res, next) => {
+  try {
+    await List.destroy({where: {id: req.params.listId}})
+    res.send('Deleted')
+  } catch (error) {
+    console.log('Trouble Deleting', error)
+  }
+})

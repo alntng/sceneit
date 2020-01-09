@@ -19,7 +19,6 @@ export default function viewList(props) {
   }, [])
 
   const addList = async data => {
-    console.log(data)
     const newList = await axios.post(
       `http://localhost:8080/api/list/${userId}`,
       data

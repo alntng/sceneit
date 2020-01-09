@@ -25,7 +25,8 @@ export default function addMovie(props) {
       movieId: data.id,
       listId: Number(listId)
     })
-    return newMovie
+
+    props.updateList()
   }
 
   const {register, handleSubmit} = useForm()

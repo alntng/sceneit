@@ -62,7 +62,7 @@ export default function movie() {
           </button>
         </div>
       ))}
-      <AddMovie listid={listId} />
+      <AddMovie listid={listId} updateList={fetchData} />
       <button
         type="submit"
         onClick={() => {

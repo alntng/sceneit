@@ -3,6 +3,7 @@ import {useParams, useHistory} from 'react-router-dom'
 import axios from 'axios'
 import AddMovie from './addMovie'
 import SingleMovie from './singleMovie'
+import {Modal, Button} from 'semantic-ui-react'
 
 export default function movie() {
   let userId = useParams().userId
@@ -22,14 +23,6 @@ export default function movie() {
   }
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const result = await axios.get(
-    //     `http://localhost:8080/api/list/${userId}/${listId}`
-    //   )
-
-    //   setMovieList(result.data.movies)
-    //   setListName(result.data.title)
-    // }
     fetchData()
   }, [])
 
@@ -51,26 +44,32 @@ export default function movie() {
       <h1>{listName}</h1>
       {moviesOnList.map(movie => (
         <div key={movie.id}>
-          <SingleMovie key={movie.id} id={movie.movieId} />
-          <button
+          <SingleMovie
+            key={movie.id}
+            id={movie.movieId}
+            delete={removeFromList}
+          />
+          {/* <button
             type="submit"
             onClick={() => {
               removeFromList(movie.id)
             }}
           >
             X
-          </button>
+          </button> */}
         </div>
       ))}
-      <AddMovie listid={listId} updateList={fetchData} />
-      <button
-        type="submit"
+      <Modal trigger={<Button>Add Movie</Button>} basic size="small">
+        <AddMovie listid={listId} updateList={fetchData} />
+      </Modal>
+      <br />
+      <Button
         onClick={() => {
           deleteList(userId, listId)
         }}
       >
         Delete this List
-      </button>
+      </Button>
     </div>
   )
 }

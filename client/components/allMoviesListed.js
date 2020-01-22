@@ -47,6 +47,7 @@ export default function movie() {
           <SingleMovie
             key={movie.id}
             id={movie.movieId}
+            postGresID={movie.id}
             delete={removeFromList}
           />
           {/* <button

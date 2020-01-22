@@ -39,7 +39,7 @@ export default function singleMovie(props) {
           <Button
             icon
             onClick={() => {
-              props.delete(props.key)
+              props.delete(props.postGresID)
               console.log('should delete')
             }}
           >

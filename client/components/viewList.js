@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {Link, Route} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-import {Header, Button, Form, Modal} from 'semantic-ui-react'
+import {Header, Button, Form, Modal, Card} from 'semantic-ui-react'
+import movie from './allMoviesListed'
 
 export default function viewList(props) {
   const [list, setList] = useState([])
@@ -34,11 +35,15 @@ export default function viewList(props) {
       <Header size="huge">Movie Lists</Header>
       {list.map(movieList => (
         <div key={movieList.id}>
-          <Header size="medium">
-            <Link to={`/list/${userId}/${movieList.id}`}>
-              {movieList.title}
-            </Link>
-          </Header>
+          <Card
+            // <Header size="medium">
+            // <Link to={`/list/${userId}/${movieList.id}`}>
+            href={`/list/${userId}/${movieList.id}`}
+            header={movieList.title}
+            description={movieList.description}
+            // </Link>
+            // </Header>
+          />
         </div>
       ))}
       <Modal trigger={<Button>Create a New List</Button>}>

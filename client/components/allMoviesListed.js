@@ -50,14 +50,6 @@ export default function movie() {
             postGresID={movie.id}
             delete={removeFromList}
           />
-          {/* <button
-            type="submit"
-            onClick={() => {
-              removeFromList(movie.id)
-            }}
-          >
-            X
-          </button> */}
         </div>
       ))}
       <Modal trigger={<Button>Add Movie</Button>} basic size="small">

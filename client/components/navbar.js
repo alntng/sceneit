@@ -6,8 +6,8 @@ import {logout} from '../store'
 import ViewList from './viewList'
 
 const Navbar = ({handleClick, isLoggedIn, userId}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
+  <div className="movieList">
+    <h1>Scene It</h1>
     <nav>
       {isLoggedIn ? (
         <div>

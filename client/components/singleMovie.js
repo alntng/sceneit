@@ -19,7 +19,7 @@ export default function singleMovie(props) {
   })
   // console.log(props, 'PROPS')
   return (
-    <div key={movie.id}>
+    <div key={movie.id} className="singleMovie">
       <Card>
         <Image
           src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
@@ -40,7 +40,7 @@ export default function singleMovie(props) {
             icon
             onClick={() => {
               props.delete(props.postGresID)
-              console.log('should delete')
+              console.log(props, 'Props')
             }}
           >
             <Icon name="user" />
@@ -48,19 +48,6 @@ export default function singleMovie(props) {
           </Button>
         </Card.Content>
       </Card>
-      {/* <Grid>
-        <Grid.Row>
-          <Grid.Column width={3}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-            />
-          </Grid.Column>
-          <Grid.Column width={13}>
-            <h3>{movie.title}</h3>
-            <h6>{movie.overview}</h6>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid> */}
     </div>
   )
 }

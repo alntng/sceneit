@@ -7,7 +7,9 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Routes />
+      <div className="backgroundImg">
+        <Routes />
+      </div>
     </div>
   )
 }

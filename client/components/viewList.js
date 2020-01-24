@@ -7,7 +7,7 @@ import movie from './allMoviesListed'
 
 export default function viewList(props) {
   const [list, setList] = useState([])
-  const {register, handleSubmit, watch, errors} = useForm()
+  const {register, handleSubmit} = useForm()
 
   const userId = props.id
 

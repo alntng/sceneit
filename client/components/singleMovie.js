@@ -40,7 +40,6 @@ export default function singleMovie(props) {
             icon
             onClick={() => {
               props.delete(props.postGresID)
-              console.log(props, 'Props')
             }}
           >
             <Icon name="user" />

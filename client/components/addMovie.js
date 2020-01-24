@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {TMDBAPIKEY} from '../../secrets'
+import {Button} from 'semantic-ui-react'
 
 export default function addMovie(props) {
   const [foundMovies, setFoundMovies] = useState([])
@@ -40,17 +41,21 @@ export default function addMovie(props) {
         <input type="submit" />
       </form>
       {foundMovies.map(movie => (
-        <div key={movie.itle}>
-          <h2>{movie.original_title}</h2>
-          <h3>{movie.release_date}</h3>
-          <button
+        <div key={movie.title} className="searchMovies">
+          <span className="searchMovies">
+            <h5>{movie.original_title}</h5>
+            <h5>{movie.release_date.slice(0, 4)}</h5>
+          </span>
+          <br />
+          <Button
             type="submit"
+            style={{textAlign: 'right'}}
             onClick={() => {
               addToList(movie, props.listid)
             }}
           >
             Add Movie
-          </button>
+          </Button>
         </div>
       ))}
     </div>

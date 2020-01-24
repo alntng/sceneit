@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+import {OscarNom} from './components/oscarNom/oscarNom'
 import {me} from './store'
 import ViewList from './components/viewList'
 import AllMoviesListed from './components/allMoviesListed'
@@ -35,6 +36,7 @@ class Routes extends Component {
               path={`/list/${userId}`}
               render={props => <ViewList {...props} id={userId} />}
             />
+            <Route path="/oscarPredictions" component={OscarNom} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

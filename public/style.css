@@ -1,11 +1,33 @@
 .backgroundImg {
   background-image: url('https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.');
   background-size: cover;
+  position: static;
   min-height: 100vh;
+}
+
+.searchMovies {
+  font-size: medium;
+  display: flex;
+  background-color: teal;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+}
+
+.movieName {
+  color: white;
+}
+
+.homePage {
+  color: white;
+  text-align: center;
 }
 
 .movieList {
   display: flex;
+  flex-wrap: wrap;
   padding-left: 1em;
 }
 

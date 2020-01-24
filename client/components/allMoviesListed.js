@@ -31,7 +31,7 @@ export default function movie() {
     await axios.put(`http://localhost:8080/api/list/${userId}/${listId}`, {
       id
     })
-    console.log('deleted from backend')
+
     fetchData()
   }
 
@@ -43,10 +43,8 @@ export default function movie() {
 
   return (
     <div>
-      <h1>{listName}</h1>
-      {/* <Modal trigger={<Button>Update Movie</Button>} basic size="small">
-        <UpdateList id={movie.id} />
-      </Modal> */}
+      <h1 className="movieName">{listName}</h1>
+
       <div className="movieList">
         {moviesOnList.map(movie => (
           <div key={movie.id}>
@@ -59,17 +57,21 @@ export default function movie() {
           </div>
         ))}
       </div>
-      <Modal trigger={<Button>Add Movie</Button>} basic size="small">
-        <AddMovie listid={listId} updateList={fetchData} />
-      </Modal>
-      <br />
-      <Button
-        onClick={() => {
-          deleteList(userId, listId)
-        }}
-      >
-        Delete this List
-      </Button>
+      <span className="buttonRow">
+        <Modal trigger={<Button>Add Movie</Button>} basic size="small">
+          <AddMovie listid={listId} updateList={fetchData} />
+        </Modal>
+        <Modal trigger={<Button>Edit List </Button>} basic size="small">
+          <UpdateList listid={listId} updateList={fetchData} />
+        </Modal>
+        <Button
+          onClick={() => {
+            deleteList(userId, listId)
+          }}
+        >
+          Delete this List
+        </Button>
+      </span>
     </div>
   )
 }

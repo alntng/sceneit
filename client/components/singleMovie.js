@@ -17,7 +17,11 @@ export default function singleMovie(props) {
     }
     fetchData()
   })
-  // console.log(props, 'PROPS')
+
+  // const deleteAndUpdate = async () => {
+  //   props.delete(props.postGresID)
+  // }
+
   return (
     <div key={movie.id} className="singleMovie">
       <Card>

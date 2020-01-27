@@ -31,7 +31,11 @@ export default function movie() {
     await axios.put(`http://localhost:8080/api/list/${userId}/${listId}`, {
       id
     })
+    console.log('updated')
 
+    // await setMovieList(
+    //   moviesOnList.filter(currentMovie => currentMovie.id !== id)
+    // )
     fetchData()
   }
 
@@ -39,6 +43,7 @@ export default function movie() {
     await axios.delete(`http://localhost:8080/api/list/${userId}/${listId}`, {})
 
     history.push(`/list/${userId}`)
+    fetchData()
   }
 
   return (
@@ -62,7 +67,7 @@ export default function movie() {
           <AddMovie listid={listId} updateList={fetchData} />
         </Modal>
         <Modal trigger={<Button>Edit List </Button>} basic size="small">
-          <UpdateList listid={listId} updateList={fetchData} />
+          <UpdateList listId={listId} userId={userId} updateList={fetchData} />
         </Modal>
         <Button
           onClick={() => {

@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {Form} from 'semantic-ui-react'
-import {useForm, Button} from 'react-hook-form'
+import {Form, Button} from 'semantic-ui-react'
+import {useForm} from 'react-hook-form'
+import axios from 'axios'
 
 export default function updateList(props) {
-  const [listId, setListId] = useState([])
+  const [listId, setListId] = useState(' ')
 
   useEffect(() => {
     setListId(props.id)
@@ -11,9 +12,17 @@ export default function updateList(props) {
 
   const {register, handleSubmit} = useForm()
 
+  const renameList = async data => {
+    await axios.put(`http://localhost:8080/api/list/${props.userId}`, {
+      listId: Number(props.listId),
+      title: data.title,
+      description: data.description
+    })
+  }
+
   return (
     <div>
-      <Form onSubmit={handleSubmit()}>
+      <Form onSubmit={handleSubmit(renameList)}>
         <Form.Field align="center">
           <label>New Title</label>
           <input name="title" placeholder="Who Cares" ref={register} />

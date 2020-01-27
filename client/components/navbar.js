@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link, Route} from 'react-router-dom'
 import {logout} from '../store'
-import ViewList from './viewList'
+import ViewAllLists from './viewAllLists'
 
 const Navbar = ({handleClick, isLoggedIn, userId}) => (
   <div className="movieList">

@@ -36,9 +36,12 @@ router.get('/:userId/:listId', async (req, res, next) => {
   }
 })
 
-router.put('/:listId', async (req, res, next) => {
+router.put('/:userId', async (req, res, next) => {
   try {
-    await List.update({title: req.body.title}, {where: {id: req.params.listId}})
+    await List.update(
+      {title: req.body.title, description: req.body.description},
+      {where: {id: req.body.listId}}
+    )
     res.send('updated')
   } catch (error) {
     console.log(error)
@@ -83,6 +86,7 @@ router.put('/:userId/:listId', async (req, res, next) => {
     const workingMovie = await Movie.findByPk(req.body.id)
 
     workingList.removeMovie(workingMovie)
+    res.send('removed')
   } catch (error) {
     console.log('Trouble Deleting', error)
   }

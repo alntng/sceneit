@@ -31,11 +31,7 @@ export default function movie() {
     await axios.put(`http://localhost:8080/api/list/${userId}/${listId}`, {
       id
     })
-    console.log('updated')
 
-    // await setMovieList(
-    //   moviesOnList.filter(currentMovie => currentMovie.id !== id)
-    // )
     fetchData()
   }
 

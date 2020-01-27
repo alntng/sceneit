@@ -3,9 +3,9 @@ import {Link, Route} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {Header, Button, Form, Modal, Card} from 'semantic-ui-react'
-import movie from './allMoviesListed'
+// import movie from './moviesOnList'
 
-export default function viewList(props) {
+export default function viewAllLists(props) {
   const [list, setList] = useState([])
   const {register, handleSubmit} = useForm()
 

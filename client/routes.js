@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {OscarNom} from './components/oscarNom/oscarNom'
 import {me} from './store'
-import ViewList from './components/viewList'
-import AllMoviesListed from './components/allMoviesListed'
+import ViewAllLists from './components/viewAllLists'
+import MoviesOnList from './components/moviesOnList'
 
 /**
  * COMPONENT
@@ -31,10 +31,10 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
-            <Route path="/list/:userId/:listId" component={AllMoviesListed} />
+            <Route path="/list/:userId/:listId" component={MoviesOnList} />
             <Route
               path={`/list/${userId}`}
-              render={props => <ViewList {...props} id={userId} />}
+              render={props => <ViewAllLists {...props} id={userId} />}
             />
             <Route path="/oscarPredictions" component={OscarNom} />
           </Switch>

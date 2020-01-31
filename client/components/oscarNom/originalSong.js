@@ -37,7 +37,7 @@ export default function originalSong() {
   ]
 
   return (
-    <div>
+    <div id="original-song">
       <h1>Original Song</h1>
       <div className="nominationList">
         {originalSongs.map(movie => {

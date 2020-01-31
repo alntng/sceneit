@@ -43,7 +43,7 @@ export default function bestPicture() {
   ]
 
   return (
-    <div>
+    <div id="best-picture">
       <h1>Best Picture</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

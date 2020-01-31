@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 .backgroundImg {
   background-image: url('https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.');
   background-size: cover;

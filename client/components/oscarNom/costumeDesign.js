@@ -30,7 +30,7 @@ export default function makeupHair() {
   ]
 
   return (
-    <div>
+    <div id="costume-design">
       <h1>Costume Design</h1>
       <div className="nominationList">
         {movies.map(movie => {

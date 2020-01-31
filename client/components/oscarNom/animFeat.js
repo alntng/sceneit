@@ -28,7 +28,7 @@ export default function animFeat() {
   ]
 
   return (
-    <div>
+    <div id="animated-feature">
       <h1>Best Animated Feature</h1>
       <div className="nominationList">
         {animatedFeatures.map(movie => {

@@ -36,7 +36,7 @@ export default function leadActor() {
   ]
 
   return (
-    <div>
+    <div id="lead-actor">
       <h1>Lead Actor</h1>
       <div className="nominationList">
         {leadActors.map(actor => {

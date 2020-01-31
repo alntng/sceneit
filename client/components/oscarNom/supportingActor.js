@@ -37,7 +37,7 @@ export default function supportingActor() {
   ]
 
   return (
-    <div>
+    <div id="supporting-actor">
       <h1>Supporting Actor</h1>
       <div className="nominationList">
         {supportingActor.map(actor => {

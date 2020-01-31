@@ -27,7 +27,7 @@ export default function soundMixing() {
   ]
 
   return (
-    <div>
+    <div id="sound-mixing">
       <h1>Sound Mixing</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

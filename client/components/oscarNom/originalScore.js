@@ -28,7 +28,7 @@ export default function bestPicture() {
   ]
 
   return (
-    <div>
+    <div id="original-score">
       <h1>Original Score</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

@@ -27,7 +27,7 @@ export default function adaptedScreenplay() {
   ]
 
   return (
-    <div>
+    <div id="adapted-screenplay">
       <h1>Adapted Screenplay</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

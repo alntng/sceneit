@@ -27,7 +27,7 @@ export default function cinematography() {
   ]
 
   return (
-    <div>
+    <div id="cinematography">
       <h1>Cinematography</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

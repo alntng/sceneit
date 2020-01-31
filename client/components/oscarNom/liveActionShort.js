@@ -31,7 +31,7 @@ export default function liveActionShort() {
   ]
 
   return (
-    <div>
+    <div id="live-action-short">
       <h1>Live Action Short</h1>
       <div className="nominationList">
         {liveActionShorts.map(movie => {

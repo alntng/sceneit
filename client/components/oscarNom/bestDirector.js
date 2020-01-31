@@ -36,7 +36,7 @@ export default function bestDirector() {
     }
   ]
   return (
-    <div>
+    <div id="best-director">
       <h1>Best Director</h1>
       <div className="nominationList">
         {directors.map(actor => {

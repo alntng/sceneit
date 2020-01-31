@@ -27,7 +27,7 @@ export default function productionDesign() {
   ]
 
   return (
-    <div>
+    <div id="production-design">
       <h1>Production Design</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

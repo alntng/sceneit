@@ -31,7 +31,7 @@ export default function visualEffects() {
   ]
 
   return (
-    <div>
+    <div id="visual-effects">
       <h1>Visual Effects</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

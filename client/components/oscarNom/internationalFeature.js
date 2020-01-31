@@ -30,7 +30,7 @@ export default function internationalFeature() {
   ]
 
   return (
-    <div>
+    <div id="international-feature">
       <h1>Best International Feature</h1>
       <div className="nominationList">
         {internationalFeatures.map(movie => {

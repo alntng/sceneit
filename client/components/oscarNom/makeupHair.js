@@ -32,7 +32,7 @@ export default function makeupHair() {
   ]
 
   return (
-    <div>
+    <div id="hair-and-makeu">
       <h1>Hair and Makeup</h1>
       <div className="nominationList">
         {movies.map(movie => {

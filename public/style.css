@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 .backgroundImg {
   background-image: url('https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.');
   background-size: cover;
@@ -6,14 +10,100 @@
 }
 
 .searchMovies {
-  font-size: medium;
-  display: flex;
-  background-color: teal;
+  font-size: larger;
 }
 
 .buttonRow {
   display: flex;
   align-items: center;
+}
+
+.nominationList {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+#movieChoice {
+  margin: auto;
+  position: relative;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-image: url('https://i.gyazo.com/67fe1541443cefc1a100e20929ec24ad.jpg');
+  background-size: contain;
+}
+
+#movieChoice:hover .overlay {
+  opacity: 0.75;
+}
+
+#leadActor {
+  object-fit: cover;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+#hairMakeup {
+  object-fit: cover;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+#ogSong {
+  object-fit: cover;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+#nominee {
+  border-radius: 10px;
+  width: 15rem;
+}
+
+.active {
+  background-color: rgb(175, 25, 25);
+  border-radius: 10px;
+  box-shadow: 10px 10px 40px 20px #d4af37;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.oscarNoms {
+  color: white;
+  text-align: center;
 }
 
 .movieName {

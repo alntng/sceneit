@@ -42,6 +42,7 @@ export default function movie() {
     fetchData()
   }
 
+  console.log(moviesOnList, '****')
   return (
     <div>
       <h1 className="movieName">{listName}</h1>

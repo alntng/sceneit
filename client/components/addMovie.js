@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {TMDBAPIKEY} from '../../secrets'
@@ -20,7 +20,7 @@ export default function addMovie(props) {
 
   const addToList = async (data, listId) => {
     // console.log(data)
-    const newMovie = await axios.post('http://localhost:8080/api/movies/', data)
+    await axios.post('http://localhost:8080/api/movies/', data)
 
     axios.put('http://localhost:8080/api/list/', {
       movieId: data.id,
@@ -41,7 +41,7 @@ export default function addMovie(props) {
         <input type="submit" />
       </form>
       {foundMovies.map(movie => (
-        <div key={movie.title} className="searchMovies">
+        <div key={movie.id} className="searchMovies">
           <span className="searchMovies">
             <h5>{movie.original_title}</h5>
             <h5>{movie.release_date.slice(0, 4)}</h5>

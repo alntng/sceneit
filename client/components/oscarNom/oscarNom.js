@@ -27,25 +27,47 @@ import VisualEffects from './visualEffects'
 
 import Sidebar from './sideBar'
 
+import emailjs from 'emailjs-com'
+import {EMAILJSUERID} from '../../../secrets'
+
 export default function oscarNom() {
-  const [visible, setVisible] = useState({visible: false})
+  const [predictions, setPredictions] = useState(' ')
+
+  const sendEmail = e => {
+    let service_id = 'default_service'
+    let template_id = 'template_2DqzUt9d'
+    e.preventDefault()
+
+    let categories = Object.keys(sessionStorage)
+    let choices = []
+
+    categories.forEach(category => {
+      choices.push(`${category}: ${sessionStorage[category]}`)
+    })
+
+    setPredictions(choices.join('<br>'))
+    console.log(predictions)
+
+    // console.log(e.target)
+    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
+  }
 
   return (
-    <div id="outerNominations" className="oscarNoms">
+    <div id="outerNominations">
       <Sidebar
         pageWrapId="innerNominations"
         outerContainerId="outerNominations"
       />
-      <div id="innerNominations">
-        <h1>Put in your Oscar Predictons</h1>
 
+      <div id="innerNominations" className="oscarNoms">
+        <h1>Put in your Oscar Predictons</h1>
         <BestPicture />
         <LeadActor />
         <LeadActress />
         <SupportingActor />
         <SupportingAcress />
         <BestDirector />
-        <AnimFeat id="animated-feature" />
+        <AnimFeat />
         <ShortAnimFeat />
         <AdaptedScreenplay />
         <OriginalScreenPlay />
@@ -63,6 +85,12 @@ export default function oscarNom() {
         <MakeupHair />
         <CostumeDesign />
         <VisualEffects />
+        <form className="oscarNoms" onSubmit={sendEmail}>
+          <label>email</label>
+          <input type="hidden" value={predictions} name="prediction" />
+          <input type="text" name="userEmail" />
+          <button type="submit" value="Send" />
+        </form>
       </div>
     </div>
   )

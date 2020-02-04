@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function supportingActor() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Supporting Actor', movieObj.name)
+  }
+
   const supportingActor = [
     {
       name: 'Tom Hanks',
@@ -46,7 +51,7 @@ export default function supportingActor() {
               id="movieChoice"
               key={actor.name}
               className={chosen.name === actor.name ? 'active' : null}
-              onClick={() => setChosen(actor)}
+              onClick={() => addToSession(actor)}
             >
               <img id="leadActor" src={actor.image} />
               <div className="overlay">

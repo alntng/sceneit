@@ -76,7 +76,6 @@ export default function sideBar() {
 
   const capitalize = str => {
     let wordArr = str.split('-')
-    console.log(wordArr)
     for (let i = 0; i < wordArr.length; i++) {
       let word = wordArr[i]
       let upperFirst = word[0].toUpperCase()

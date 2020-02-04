@@ -28,7 +28,7 @@ import VisualEffects from './visualEffects'
 import Sidebar from './sideBar'
 
 import emailjs from 'emailjs-com'
-import {EMAILJSUERID} from '../../../secrets'
+import {EMAILJSUSERID} from '../../../secrets'
 
 export default function oscarNom() {
   const [predictions, setPredictions] = useState(' ')
@@ -46,10 +46,10 @@ export default function oscarNom() {
     })
 
     setPredictions(choices.join('<br/>'))
-    console.log(predictions)
+    // console.log(predictions)
 
     console.log(e.target)
-    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
+    window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUSERID)
   }
 
   return (

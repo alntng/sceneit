@@ -45,11 +45,11 @@ export default function oscarNom() {
       choices.push(`${category}: ${sessionStorage[category]}`)
     })
 
-    setPredictions(choices.join('<br>'))
-    console.log(predictions)
+    setPredictions(choices.join('<br/>'))
+    // console.log(predictions)
 
     // console.log(e.target)
-    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
+    window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
   }
 
   return (
@@ -87,7 +87,7 @@ export default function oscarNom() {
         <VisualEffects />
         <form className="oscarNoms" onSubmit={sendEmail}>
           <label>email</label>
-          <input type="hidden" value={predictions} name="prediction" />
+          <textarea type="hidden" value={predictions} name="prediction" />
           <input type="text" name="userEmail" />
           <button type="submit" value="Send" />
         </form>

@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function liveActionShort() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Live Action Short', movieObj.title)
+  }
+
   const liveActionShorts = [
     {
       title: 'Brotherhood',
@@ -40,7 +45,7 @@ export default function liveActionShort() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.poster} />
               <div className="overlay">

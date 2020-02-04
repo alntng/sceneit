@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function originalSong() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Original Song', movieObj.title)
+  }
+
   const originalSongs = [
     {
       title: 'I Can’t Let You Throw Yourself Away',
@@ -46,7 +51,7 @@ export default function originalSong() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.posterUrl} />
               <div className="overlay">

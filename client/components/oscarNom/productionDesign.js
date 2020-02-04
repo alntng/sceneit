@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 
 export default function productionDesign() {
   const [chosen, setChosen] = useState({})
+
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Production Design', movieObj.title)
+  }
+
   const moviePosters = [
     {
       title: 'The IrishMan',
@@ -36,7 +42,7 @@ export default function productionDesign() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.posterUrl} />
               <div className="overlay">

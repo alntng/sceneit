@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function animFeat() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Best Animated Feature', movieObj.title)
+  }
+
   const animatedFeatures = [
     {
       title: 'How to Train Your Dragon: The Hidden World',
@@ -37,7 +42,7 @@ export default function animFeat() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.poster} />
               <div className="overlay">

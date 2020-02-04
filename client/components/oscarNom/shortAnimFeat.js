@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function shortAnimFeat() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Short Animation Feature', movieObj.name)
+  }
+
   const shortAnims = [
     {
       name: 'Dcera',
@@ -40,7 +45,7 @@ export default function shortAnimFeat() {
               id="movieChoice"
               key={movie.name}
               className={chosen.name === movie.name ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.poster} />
               <div className="overlay">

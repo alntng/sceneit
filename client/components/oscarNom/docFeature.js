@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function docFeature() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Documentary Feature', movieObj.title)
+  }
+
   const documentaries = [
     {
       title: 'Anerican Factory',
@@ -39,7 +44,7 @@ export default function docFeature() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.poster} />
               <div className="overlay">

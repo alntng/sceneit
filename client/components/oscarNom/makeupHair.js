@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function makeupHair() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Hair and Makeup', movieObj.title)
+  }
+
   const movies = [
     {
       title: 'BombShell',
@@ -41,7 +46,7 @@ export default function makeupHair() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="hairMakeup" src={movie.img} />
               <div className="overlay">

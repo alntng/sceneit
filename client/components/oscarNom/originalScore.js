@@ -3,6 +3,11 @@ import React, {useState} from 'react'
 export default function bestPicture() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Original Score', movieObj.title)
+  }
+
   const moviePosters = [
     {
       title: 'Joker',
@@ -37,7 +42,7 @@ export default function bestPicture() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.posterUrl} />
               <div className="overlay">

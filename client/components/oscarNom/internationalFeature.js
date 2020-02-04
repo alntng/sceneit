@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 
 export default function internationalFeature() {
   const [chosen, setChosen] = useState({})
+
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('International Feature', movieObj.title)
+  }
+
   const internationalFeatures = [
     {
       title: 'Corpus Christi',
@@ -39,7 +45,7 @@ export default function internationalFeature() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="nominee" src={movie.poster} />
               <div className="overlay">

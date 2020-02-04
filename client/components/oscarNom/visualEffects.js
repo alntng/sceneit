@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 
 export default function visualEffects() {
   const [chosen, setChosen] = useState({})
+
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Visual Effects', movieObj.title)
+  }
+
   const moviePosters = [
     {
       title: 'Avengers Endgame',
@@ -40,7 +46,7 @@ export default function visualEffects() {
               id="movieChoice"
               key={movie.title}
               className={chosen.title === movie.title ? 'active' : null}
-              onClick={() => setChosen(movie)}
+              onClick={() => addToSession(movie)}
             >
               <img id="hairMakeup" src={movie.posterUrl} />
               <div className="overlay">

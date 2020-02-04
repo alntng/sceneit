@@ -4,6 +4,11 @@ import supportingActor from './supportingActor'
 export default function supportingActress() {
   const [chosen, setChosen] = useState({})
 
+  const addToSession = movieObj => {
+    setChosen(movieObj)
+    window.sessionStorage.setItem('Supporting Actress', movieObj.name)
+  }
+
   const supportingActress = [
     {
       name: 'Kathy Bates',
@@ -46,7 +51,7 @@ export default function supportingActress() {
               id="movieChoice"
               key={actor.name}
               className={chosen.name === actor.name ? 'active' : null}
-              onClick={() => setChosen(actor)}
+              onClick={() => addToSession(actor)}
             >
               <img id="leadActor" src={actor.image} />
               <div className="overlay">

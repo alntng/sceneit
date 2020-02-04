@@ -50,7 +50,7 @@ export default function viewAllLists(props) {
         <Form onSubmit={handleSubmit(addList)}>
           <Form.Field align="center">
             <label>Name of List</label>
-            <input name="title" placeholder="Who Cares" ref={register} />
+            <input name="title" placeholder="ie: Watchlist" ref={register} />
           </Form.Field>
           <br />
           <Form.Field>
@@ -63,7 +63,7 @@ export default function viewAllLists(props) {
           </Form.Field>
           <br />
           <Button color="red" type="submit">
-            create new list
+            Create New List
           </Button>
         </Form>
       </Modal>

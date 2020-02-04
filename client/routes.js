@@ -7,6 +7,7 @@ import OscarNom from './components/oscarNom/oscarNom'
 import {me} from './store'
 import ViewAllLists from './components/viewAllLists'
 import MoviesOnList from './components/moviesOnList'
+import ThanksForPlaying from './components/oscarNom/sentPredictions'
 
 /**
  * COMPONENT
@@ -26,6 +27,11 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route
+          path="/oscarPredictions/thanksForPlaying"
+          component={ThanksForPlaying}
+        />
+        <Route path="/oscarPredictions" component={OscarNom} />
 
         {isLoggedIn && (
           <Switch>
@@ -35,6 +41,10 @@ class Routes extends Component {
             <Route
               path={`/list/${userId}`}
               render={props => <ViewAllLists {...props} id={userId} />}
+            />
+            <Route
+              path="/oscarPredictions/thanksForPlaying"
+              component={ThanksForPlaying}
             />
             <Route path="/oscarPredictions" component={OscarNom} />
           </Switch>

@@ -7,11 +7,11 @@ export default function sideBar() {
       position: 'fixed',
       width: '36px',
       height: '30px',
-      left: '36px',
-      top: '36px'
+      left: '36px'
+      // top: '36px'
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: '#f0e800'
     },
     bmBurgerBarsHover: {
       background: '#a90000'
@@ -30,13 +30,13 @@ export default function sideBar() {
     bmMenu: {
       background: '#373a47',
       padding: '2.5em 1.5em 0',
-      fontSize: '1.15em'
+      fontSize: '1.3em'
     },
     bmMorphShape: {
       fill: '#373a47'
     },
     bmItemList: {
-      color: '#b8b7ad',
+      color: '#ffffff',
       padding: '0.8em'
     },
     bmItem: {
@@ -57,7 +57,7 @@ export default function sideBar() {
     'animated-feature',
     'short-animted-feature',
     'adapted-screenplay',
-    'origianl-screenplay',
+    'original-screenplay',
     'cinematography',
     'documentary-feature',
     'documentary-short-subject',

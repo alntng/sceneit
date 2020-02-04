@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {Form, Button} from 'semantic-ui-react'
+import {useHistory} from 'react-router-dom'
 
 import BestPicture from './bestPicture'
 import LeadActor from './leadActor'
@@ -32,8 +34,13 @@ import {EMAILJSUSERID} from '../../../secrets'
 
 export default function oscarNom() {
   const [predictions, setPredictions] = useState(' ')
+  const history = useHistory()
 
-  const sendEmail = e => {
+  useEffect(() => {
+    console.log('Guesses', predictions)
+  })
+
+  const sendEmail = async e => {
     let service_id = 'default_service'
     let template_id = 'template_2DqzUt9d'
     e.preventDefault()
@@ -41,26 +48,32 @@ export default function oscarNom() {
     let categories = Object.keys(sessionStorage)
     let choices = []
 
-    categories.forEach(category => {
+    await categories.forEach(category => {
       choices.push(`${category}: ${sessionStorage[category]}`)
     })
 
-    setPredictions(choices.join('<br/>'))
-    // console.log(predictions)
+    // setPredictions(choices.join('<br/>'))
 
-    console.log(e.target)
-    window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUSERID)
+    //!function for testing
+    await setPredictions(choices.join('\n'))
+
+    history.push(`/oscarPredictions/thanksForPlaying`)
+    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUSERID)
   }
 
   return (
-    <div id="outerNominations">
+    <div id="outerNominations" style={{paddingBottom: '10rem'}}>
       <Sidebar
         pageWrapId="innerNominations"
         outerContainerId="outerNominations"
       />
 
       <div id="innerNominations" className="oscarNoms">
-        <h1>Put in your Oscar Predictons</h1>
+        <h1>
+          <b>
+            <em>Place Your Predictions Before February 9th!</em>
+          </b>
+        </h1>
         <BestPicture />
         <LeadActor />
         <LeadActress />
@@ -85,12 +98,24 @@ export default function oscarNom() {
         <MakeupHair />
         <CostumeDesign />
         <VisualEffects />
-        <form className="oscarNoms" onSubmit={sendEmail}>
-          <label>email</label>
-          <textarea type="hidden" value={predictions} name="prediction" />
-          <input type="text" name="userEmail" />
-          <button type="submit" value="Send" />
-        </form>
+        <Form className="oscarNoms" onSubmit={sendEmail}>
+          {/* <label>Email your Selections!</label> */}
+          <textarea
+            style={{display: 'none'}}
+            value={predictions}
+            name="prediction"
+          />
+          <Form.Field>
+            <input
+              type="text"
+              name="userEmail"
+              placeholder="example@email.com"
+            />
+            <br />
+            <br />
+            <Button type="submit">Email your Predictions</Button>
+          </Form.Field>
+        </Form>
       </div>
     </div>
   )

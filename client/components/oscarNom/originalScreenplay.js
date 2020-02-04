@@ -32,7 +32,7 @@ export default function bestPicture() {
   ]
 
   return (
-    <div id="origianl-screenplay">
+    <div id="original-screenplay">
       <h1>Original Screenplay</h1>
       <div className="nominationList">
         {moviePosters.map(movie => {

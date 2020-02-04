@@ -25,7 +25,7 @@ export default function updateList(props) {
       <Form onSubmit={handleSubmit(renameList)}>
         <Form.Field align="center">
           <label>New Title</label>
-          <input name="title" placeholder="Who Cares" ref={register} />
+          <input name="title" placeholder="New Name" ref={register} />
         </Form.Field>
         <br />
         <Form.Field>

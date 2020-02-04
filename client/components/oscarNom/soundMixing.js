@@ -15,7 +15,7 @@ export default function soundMixing() {
     },
     {
       title: 'Ad Astra',
-      posterUrl: 'https://theposterdb.com/api/assets/44358/view'
+      posterUrl: 'https://theposterdb.com/api/assets/33701/view'
     },
     {
       title: 'Joker',

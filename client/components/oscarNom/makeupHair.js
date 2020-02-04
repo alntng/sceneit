@@ -37,7 +37,7 @@ export default function makeupHair() {
   ]
 
   return (
-    <div id="hair-and-makeu">
+    <div id="hair-and-makeup">
       <h1>Hair and Makeup</h1>
       <div className="nominationList">
         {movies.map(movie => {

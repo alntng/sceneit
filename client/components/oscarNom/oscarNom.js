@@ -46,10 +46,10 @@ export default function oscarNom() {
     })
 
     setPredictions(choices.join('<br/>'))
-    // console.log(predictions)
+    console.log(predictions)
 
-    // console.log(e.target)
-    window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
+    console.log(e.target)
+    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUERID)
   }
 
   return (

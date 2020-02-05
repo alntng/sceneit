@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function docFeature() {
+export default function docFeature(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Documentary Feature', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Documentary Feature': movieObj.title
+    })
   }
 
   const documentaries = [

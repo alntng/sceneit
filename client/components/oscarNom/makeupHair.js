@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function makeupHair() {
+export default function makeupHair(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Hair and Makeup', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Hair and Makeup': movieObj.title
+    })
   }
 
   const movies = [

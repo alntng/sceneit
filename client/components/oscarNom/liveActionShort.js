@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function liveActionShort() {
+export default function liveActionShort(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Live Action Short', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Live Action Short': movieObj.title
+    })
   }
 
   const liveActionShorts = [

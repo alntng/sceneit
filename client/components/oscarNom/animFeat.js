@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function animFeat() {
+export default function animFeat(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Best Animated Feature', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Animated Feature': movieObj.title
+    })
   }
 
   const animatedFeatures = [

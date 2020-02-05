@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function leadActress() {
+export default function leadActress(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Lead Actress', movieObj.name)
+    props.setPredictions({
+      ...props.predictions,
+      'Lead Actress': movieObj.name
+    })
   }
 
   const leadActress = [

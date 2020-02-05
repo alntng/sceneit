@@ -31,34 +31,48 @@ import Sidebar from './sideBar'
 
 import emailjs from 'emailjs-com'
 import {EMAILJSUSERID} from '../../../secrets'
+import {categories, capitalize} from './utilities'
 
 export default function oscarNom() {
-  const [predictions, setPredictions] = useState(' ')
+  const [predictions, setPredictions] = useState({})
+  const [userEmail, setUserEmail] = useState('')
+
   const history = useHistory()
 
   useEffect(() => {
     console.log('Guesses', predictions)
   })
 
-  const sendEmail = async e => {
+  let emailArray = []
+  let emailBody = ''
+
+  const sendEmail = () => {
     let service_id = 'default_service'
     let template_id = 'template_2DqzUt9d'
-    e.preventDefault()
 
-    let categories = Object.keys(sessionStorage)
-    let choices = []
+    const capitalizedCategories = categories.map(category =>
+      capitalize(category)
+    )
 
-    await categories.forEach(category => {
-      choices.push(`${category}: ${sessionStorage[category]}`)
-    })
+    capitalizedCategories.forEach(category =>
+      emailArray.push([`${category} : ${predictions[category]}`])
+    )
 
-    // setPredictions(choices.join('<br/>'))
+    let templateParams = {
+      prediction: emailArray.join('<br/>'),
+      userEmail
+    }
 
-    //!function for testing
-    await setPredictions(choices.join('\n'))
+    // '<br/>' for emailjs dynamic variables
+    // e.target.value = emailArray.join('<br/>')
+    // console.log(e.target.value, 'the event')
 
+    // '\n' email testing prurposes
+    // emailBody = emailArray.join('\n')
+    // console.log(emailBody)
+
+    window.emailjs.send(service_id, template_id, templateParams, EMAILJSUSERID)
     history.push(`/oscarPredictions/thanksForPlaying`)
-    // window.emailjs.sendForm(service_id, template_id, e.target, EMAILJSUSERID)
   }
 
   return (
@@ -71,38 +85,97 @@ export default function oscarNom() {
       <div id="innerNominations" className="oscarNoms">
         <h1>
           <b>
-            <em>Place Your Predictions Before February 9th!</em>
+            <em>Place Your Predictions Before February 9th</em>
           </b>
         </h1>
-        <BestPicture />
-        <LeadActor />
-        <LeadActress />
-        <SupportingActor />
-        <SupportingAcress />
-        <BestDirector />
-        <AnimFeat />
-        <ShortAnimFeat />
-        <AdaptedScreenplay />
-        <OriginalScreenPlay />
-        <Cinematography />
-        <DocFeature />
-        <DocShortSubject />
-        <LiveActionShort />
-        <InternationalFeatures />
-        <FilmEditing />
-        <SoundEditing />
-        <SoundMixing />
-        <ProductionDesign />
-        <OriginalScore />
-        <OriginalSong />
-        <MakeupHair />
-        <CostumeDesign />
-        <VisualEffects />
+        <BestPicture
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <LeadActor predictions={predictions} setPredictions={setPredictions} />
+        <LeadActress
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <SupportingActor
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <SupportingAcress
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <BestDirector
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <AnimFeat predictions={predictions} setPredictions={setPredictions} />
+        <ShortAnimFeat
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <AdaptedScreenplay
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <OriginalScreenPlay
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <Cinematography
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <DocFeature predictions={predictions} setPredictions={setPredictions} />
+        <DocShortSubject
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <LiveActionShort
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <InternationalFeatures
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <FilmEditing
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <SoundEditing
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <SoundMixing
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <ProductionDesign
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <OriginalScore
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <OriginalSong
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <MakeupHair predictions={predictions} setPredictions={setPredictions} />
+        <CostumeDesign
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
+        <VisualEffects
+          predictions={predictions}
+          setPredictions={setPredictions}
+        />
         <Form className="oscarNoms" onSubmit={sendEmail}>
-          {/* <label>Email your Selections!</label> */}
           <textarea
             style={{display: 'none'}}
-            value={predictions}
+            value={emailBody}
             name="prediction"
           />
           <Form.Field>
@@ -110,6 +183,7 @@ export default function oscarNom() {
               type="text"
               name="userEmail"
               placeholder="example@email.com"
+              onChange={e => setUserEmail(e.target.value)}
             />
             <br />
             <br />

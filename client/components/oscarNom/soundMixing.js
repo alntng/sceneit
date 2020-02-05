@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function soundMixing() {
+export default function soundMixing(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Sound Mixing', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Sound Mixing': movieObj.title
+    })
   }
 
   const moviePosters = [

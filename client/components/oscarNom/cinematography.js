@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function cinematography() {
+export default function cinematography(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Cinematography', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      Cinematography: movieObj.title
+    })
   }
 
   const moviePosters = [

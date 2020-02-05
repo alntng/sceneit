@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function visualEffects() {
+export default function visualEffects(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Visual Effects', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Visual Effects': movieObj.title
+    })
   }
 
   const moviePosters = [

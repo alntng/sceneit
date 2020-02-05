@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function bestDirector() {
+export default function bestDirector(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Best Director', movieObj.name)
+    props.setPredictions({
+      ...props.predictions,
+      'Best Director': movieObj.name
+    })
   }
 
   const directors = [

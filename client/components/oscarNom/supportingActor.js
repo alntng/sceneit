@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function supportingActor() {
+export default function supportingActor(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Supporting Actor', movieObj.name)
+    props.setPredictions({
+      ...props.predictions,
+      'Supporting Actor': movieObj.name
+    })
   }
 
   const supportingActor = [

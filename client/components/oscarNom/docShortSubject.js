@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function docShortSubject() {
+export default function docShortSubject(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Documentary Short Subject', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Documentary Short Subject': movieObj.name
+    })
   }
 
   const shortSubjects = [

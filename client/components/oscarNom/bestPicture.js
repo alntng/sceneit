@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
+import ItemsCarousel from 'react-items-carousel'
+import sentPredictions from './sentPredictions'
 
-export default function bestPicture() {
+export default function bestPicture(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Best Picture', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Best Picture': movieObj.title
+    })
   }
 
   const moviePosters = [
@@ -47,6 +52,7 @@ export default function bestPicture() {
     }
   ]
 
+  const chevronWidth = 30
   return (
     <div id="best-picture">
       <h1>Best Picture</h1>

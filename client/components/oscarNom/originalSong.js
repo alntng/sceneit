@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function originalSong() {
+export default function originalSong(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Original Song', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Original Song': movieObj.title
+    })
   }
 
   const originalSongs = [

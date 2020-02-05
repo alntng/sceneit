@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function productionDesign() {
+export default function productionDesign(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Production Design', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Production Design': movieObj.title
+    })
   }
 
   const moviePosters = [

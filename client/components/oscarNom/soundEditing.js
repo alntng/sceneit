@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function soundEditing() {
+export default function soundEditing(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Sound Editing', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'Sound Editing': movieObj.title
+    })
   }
 
   const moviePosters = [

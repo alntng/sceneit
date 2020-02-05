@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function internationalFeature() {
+export default function internationalFeature(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('International Feature', movieObj.title)
+    props.setPredictions({
+      ...props.predictions,
+      'International Feature': movieObj.title
+    })
   }
 
   const internationalFeatures = [

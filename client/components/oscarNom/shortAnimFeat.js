@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
-export default function shortAnimFeat() {
+export default function shortAnimFeat(props) {
   const [chosen, setChosen] = useState({})
 
   const addToSession = movieObj => {
     setChosen(movieObj)
-    window.sessionStorage.setItem('Short Animation Feature', movieObj.name)
+    props.setPredictions({
+      ...props.predictions,
+      'Short Animated Feature': movieObj.name
+    })
   }
 
   const shortAnims = [

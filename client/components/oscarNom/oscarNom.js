@@ -39,10 +39,6 @@ export default function oscarNom() {
 
   const history = useHistory()
 
-  useEffect(() => {
-    console.log('Guesses', predictions)
-  })
-
   let emailArray = []
   let emailBody = ''
 
@@ -62,14 +58,6 @@ export default function oscarNom() {
       prediction: emailArray.join('<br/>'),
       userEmail
     }
-
-    // '<br/>' for emailjs dynamic variables
-    // e.target.value = emailArray.join('<br/>')
-    // console.log(e.target.value, 'the event')
-
-    // '\n' email testing prurposes
-    // emailBody = emailArray.join('\n')
-    // console.log(emailBody)
 
     window.emailjs.send(service_id, template_id, templateParams, EMAILJSUSERID)
     history.push(`/oscarPredictions/thanksForPlaying`)

@@ -19,7 +19,7 @@ export default function leadActor(props) {
       name: 'Leonardo Di Caprio',
       movie: 'Once Upon a Time in HollyWood',
       image:
-        'https://cdn.vox-cdn.com/thumbor/Bnbz8ziSXa0fdhi2m5hS0bMCzdg=/0x0:3000x2000/1375x1375/filters:focal(1213x216:1693x696):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/64838034/Film_Review___Once_Upon_a_Time_in_Hollywood_09982.0.jpg'
+        'https://www.usajacket.com/wp-content/uploads/2018/07/Leonardo-DiCaprio-Blazer-Jacket.jpg'
     },
     {
       name: 'Adam Driver',

@@ -168,7 +168,7 @@ export default function oscarNom() {
           />
           <Form.Field>
             <input
-              type="text"
+              type="email"
               name="userEmail"
               placeholder="example@email.com"
               onChange={e => setUserEmail(e.target.value)}

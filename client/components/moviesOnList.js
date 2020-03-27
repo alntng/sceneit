@@ -56,6 +56,7 @@ export default function movie() {
   return (
     <div>
       <h1 className="movieName">{listName}</h1>
+      <h1 className="movieName">DOES THIS SHOW</h1>
 
       <div className="movieList">
         {moviesOnList.map(movie => (

@@ -18,6 +18,8 @@ export default function updateList(props) {
       title: data.title,
       description: data.description
     })
+
+    props.fetchData()
   }
 
   return (

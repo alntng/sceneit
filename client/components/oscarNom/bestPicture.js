@@ -52,7 +52,6 @@ export default function bestPicture(props) {
     }
   ]
 
-  const chevronWidth = 30
   return (
     <div id="best-picture">
       <h1>Best Picture</h1>

@@ -18,10 +18,6 @@ export default function singleMovie(props) {
     fetchData()
   })
 
-  // const deleteAndUpdate = async () => {
-  //   props.delete(props.postGresID)
-  // }
-
   return (
     <div key={movie.id} className="singleMovie">
       <Card>
@@ -46,7 +42,7 @@ export default function singleMovie(props) {
               props.delete(props.postGresID)
             }}
           >
-            <Icon name="user" />
+            <Icon />
             Remove movie from list
           </Button>
         </Card.Content>

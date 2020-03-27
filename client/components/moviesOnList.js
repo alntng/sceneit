@@ -25,7 +25,18 @@ export default function movie() {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  })
+
+  const addToList = async (data, listId) => {
+    // await axios.post('http://localhost:8080/api/movies/', data)
+    console.log('hello')
+    await axios.put('http://localhost:8080/api/list/', {
+      movieId: data.id,
+      listId: Number(listId)
+    })
+
+    // await fetchData()
+  }
 
   const removeFromList = async id => {
     await axios.put(`http://localhost:8080/api/list/${userId}/${listId}`, {
@@ -42,7 +53,6 @@ export default function movie() {
     fetchData()
   }
 
-  console.log(moviesOnList, '****')
   return (
     <div>
       <h1 className="movieName">{listName}</h1>
@@ -61,7 +71,7 @@ export default function movie() {
       </div>
       <span className="buttonRow">
         <Modal trigger={<Button>Add Movie</Button>} basic size="small">
-          <AddMovie listid={listId} updateList={fetchData} />
+          <AddMovie listid={listId} addToList={addToList} />
         </Modal>
         <Modal trigger={<Button>Edit List </Button>} basic size="small">
           <UpdateList listId={listId} userId={userId} updateList={fetchData} />

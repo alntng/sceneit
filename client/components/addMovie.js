@@ -18,17 +18,17 @@ export default function addMovie(props) {
     setFoundMovies(movieSearch)
   }
 
-  const addToList = async (data, listId) => {
-    // console.log(data)
-    await axios.post('http://localhost:8080/api/movies/', data)
+  // const addToList = async (data, listId) => {
+  //   await axios.post('http://localhost:8080/api/movies/', data)
+  //   console.lop('in between actions')
+  //   await axios.put('http://localhost:8080/api/list/', {
+  //     movieId: data.id,
+  //     listId: Number(listId)
+  //   })
 
-    axios.put('http://localhost:8080/api/list/', {
-      movieId: data.id,
-      listId: Number(listId)
-    })
-
-    props.updateList()
-  }
+  //   console.log('movie added')
+  //   props.updateList()
+  // }
 
   const {register, handleSubmit} = useForm()
 
@@ -51,7 +51,7 @@ export default function addMovie(props) {
             type="submit"
             style={{textAlign: 'right'}}
             onClick={() => {
-              addToList(movie, props.listid)
+              props.addToList(movie, props.listid)
             }}
           >
             Add Movie

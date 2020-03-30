@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import {useParams, useHistory} from 'react-router-dom'
-import {Modal, Button} from 'semantic-ui-react'
-import axios from 'axios'
-import AddMovie from './addMovie'
-import SingleMovie from './singleMovie'
-import UpdateList from './updateList'
+import React, {useState, useEffect} from "react"
+import {useParams, useHistory} from "react-router-dom"
+import {Modal, Button} from "semantic-ui-react"
+import axios from "axios"
+import AddMovie from "./addMovie"
+import SingleMovie from "./singleMovie"
+import UpdateList from "./updateList"
 
 export default function movie() {
   let userId = useParams().userId
@@ -12,7 +12,7 @@ export default function movie() {
   const history = useHistory()
 
   const [moviesOnList, setMovieList] = useState([])
-  const [listName, setListName] = useState(' ')
+  const [listName, setListName] = useState(" ")
 
   const fetchData = async () => {
     const result = await axios.get(
@@ -25,17 +25,17 @@ export default function movie() {
 
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
   const addToList = async (data, listId) => {
-    // await axios.post('http://localhost:8080/api/movies/', data)
-    console.log('hello')
-    await axios.put('http://localhost:8080/api/list/', {
+    await axios.post("http://localhost:8080/api/movies/", data)
+    console.log("hello")
+    await axios.put("http://localhost:8080/api/list/", {
       movieId: data.id,
       listId: Number(listId)
     })
 
-    // await fetchData()
+    await fetchData()
   }
 
   const removeFromList = async id => {
@@ -45,6 +45,16 @@ export default function movie() {
 
     fetchData()
   }
+
+  // const renameList = async data => {
+  //   await axios.put(`http://localhost:8080/api/list/${props.userId}`, {
+  //     listId: Number(props.listId),
+  //     title: data.title,
+  //     description: data.description
+  //   })
+
+  //   props.fetchData()
+  // }
 
   const deleteList = async (userId, listId) => {
     await axios.delete(`http://localhost:8080/api/list/${userId}/${listId}`, {})
@@ -56,7 +66,6 @@ export default function movie() {
   return (
     <div>
       <h1 className="movieName">{listName}</h1>
-      <h1 className="movieName">DOES THIS SHOW</h1>
 
       <div className="movieList">
         {moviesOnList.map(movie => (

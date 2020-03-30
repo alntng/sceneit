@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
-import {useForm} from 'react-hook-form'
-import axios from 'axios'
-import {TMDBAPIKEY} from '../../secrets'
-import {Button} from 'semantic-ui-react'
+import React, {useState} from "react"
+import {useForm} from "react-hook-form"
+import axios from "axios"
+import {TMDBAPIKEY} from "../../secrets"
+import {Button} from "semantic-ui-react"
 
 export default function addMovie(props) {
   const [foundMovies, setFoundMovies] = useState([])
 
   const queryMovie = async data => {
-    const movieQuery = data.Title.split(' ').join('%20')
+    const movieQuery = data.Title.split(" ").join("%20")
     const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDBAPIKEY}&language=en-US&query=${movieQuery}&page=1&include_adult=false`
 
     const res = await axios.get(movieURL)
@@ -17,18 +17,6 @@ export default function addMovie(props) {
 
     setFoundMovies(movieSearch)
   }
-
-  // const addToList = async (data, listId) => {
-  //   await axios.post('http://localhost:8080/api/movies/', data)
-  //   console.lop('in between actions')
-  //   await axios.put('http://localhost:8080/api/list/', {
-  //     movieId: data.id,
-  //     listId: Number(listId)
-  //   })
-
-  //   console.log('movie added')
-  //   props.updateList()
-  // }
 
   const {register, handleSubmit} = useForm()
 
@@ -49,7 +37,7 @@ export default function addMovie(props) {
           <br />
           <Button
             type="submit"
-            style={{textAlign: 'right'}}
+            style={{textAlign: "right"}}
             onClick={() => {
               props.addToList(movie, props.listid)
             }}

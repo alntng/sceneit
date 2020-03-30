@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
-import {Form, Button} from 'semantic-ui-react'
-import {useForm} from 'react-hook-form'
-import axios from 'axios'
+import React, {useState, useEffect} from "react"
+import {Form, Button} from "semantic-ui-react"
+import {useForm} from "react-hook-form"
+import axios from "axios"
 
 export default function updateList(props) {
-  const [listId, setListId] = useState(' ')
+  const [listId, setListId] = useState(" ")
 
   useEffect(() => {
     setListId(props.id)
@@ -13,13 +13,14 @@ export default function updateList(props) {
   const {register, handleSubmit} = useForm()
 
   const renameList = async data => {
+    console.log("data", data)
     await axios.put(`http://localhost:8080/api/list/${props.userId}`, {
       listId: Number(props.listId),
       title: data.title,
       description: data.description
     })
 
-    props.fetchData()
+    props.updateList()
   }
 
   return (

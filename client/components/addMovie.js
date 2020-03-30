@@ -29,21 +29,30 @@ export default function addMovie(props) {
         <input type="submit" />
       </form>
       {foundMovies.map(movie => (
-        <div key={movie.id} className="searchMovies">
-          <span className="searchMovies">
-            <h5>{movie.original_title}</h5>
-            <h5>{movie.release_date.slice(0, 4)}</h5>
-          </span>
-          <br />
-          <Button
-            type="submit"
-            style={{textAlign: "right"}}
-            onClick={() => {
-              props.addToList(movie, props.listid)
-            }}
-          >
-            Add Movie
-          </Button>
+        <div
+          key={movie.id}
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/w300/${
+              movie.backdrop_path
+            })`
+          }}
+        >
+          <div>
+            <div className="searchMovies">
+              <h5>{movie.original_title}</h5>
+              <h5>{movie.release_date.slice(0, 4)}</h5>
+            </div>
+            <br />
+            <Button
+              type="submit"
+              style={{textAlign: "right"}}
+              onClick={() => {
+                props.addToList(movie, props.listid)
+              }}
+            >
+              Add Movie
+            </Button>
+          </div>
         </div>
       ))}
     </div>

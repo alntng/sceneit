@@ -29,7 +29,7 @@ export default function movie() {
 
   const addToList = async (data, listId) => {
     await axios.post("http://localhost:8080/api/movies/", data)
-    console.log("hello")
+
     await axios.put("http://localhost:8080/api/list/", {
       movieId: data.id,
       listId: Number(listId)
@@ -79,6 +79,7 @@ export default function movie() {
           </div>
         ))}
       </div>
+
       <span className="buttonRow">
         <Modal trigger={<Button>Add Movie</Button>} basic size="small">
           <AddMovie listid={listId} addToList={addToList} />

@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import axios from 'axios'
-import {Grid, Image, Card, Icon, Button} from 'semantic-ui-react'
-import {TMDBAPIKEY, tmdbConfig} from '../../secrets'
+import React, {useState, useEffect} from "react"
+import {useParams} from "react-router-dom"
+import axios from "axios"
+import {Grid, Image, Card, Icon, Button} from "semantic-ui-react"
+import {TMDBAPIKEY, tmdbConfig} from "../../secrets"
 
 export default function singleMovie(props) {
   const [movie, setMovie] = useState({})
@@ -22,7 +22,7 @@ export default function singleMovie(props) {
     <div key={movie.id} className="singleMovie">
       <Card>
         <Image
-          src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           wrapped
           ui={false}
         />
@@ -30,10 +30,10 @@ export default function singleMovie(props) {
           <Card.Header>{movie.title}</Card.Header>
           <Card.Meta>
             <span className="date">
-              {movie.release_date ? movie.release_date.slice(0, 4) : 'nothing'}
+              {movie.release_date ? movie.release_date.slice(0, 4) : "nothing"}
             </span>
           </Card.Meta>
-          <Card.Description>{movie.overview}</Card.Description>
+          {/* <Card.Description>{movie.overview}</Card.Description> */}
         </Card.Content>
         <Card.Content extra>
           <Button

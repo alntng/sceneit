@@ -8,7 +8,7 @@
 }
 
 .backgroundImg {
-  background-image: url('https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.');
+  background-image: url("https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.");
   background-size: cover;
   position: static;
   min-height: 100vh;
@@ -16,11 +16,13 @@
 
 .searchMovies {
   font-size: larger;
+  background-image: url("https://images-na.ssl-images-amazon.com/images/I/41ZvUwe08EL.jpg");
 }
 
 .buttonRow {
+  margin-top: 3em;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .nominationList {
@@ -49,7 +51,7 @@
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-image: url('https://i.gyazo.com/67fe1541443cefc1a100e20929ec24ad.jpg');
+  background-image: url("https://i.gyazo.com/67fe1541443cefc1a100e20929ec24ad.jpg");
   background-size: contain;
 }
 
